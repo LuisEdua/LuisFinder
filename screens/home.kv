@@ -1,0 +1,27 @@
+<HomeScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: app.theme_cls.primary_dark if app.theme_cls.theme_style == 'Dark' else app.theme_cls.primary_light
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MDTopAppBar
+            title: "Luis Finder"
+            md_bg_color: app.theme_cls.primary_color
+        FloatLayout:
+            canvas.before:
+                RoundedRectangle:
+                    size: (self.width / 5) * 3, (self.height / 5) * 3
+                    pos: 3 * self.width / 15, 3 * self.height / 15
+                    radius: [self.height / 10]
+            MDFloatingActionButton:
+                icon: "camera-outline"
+                user_font_size: "1000sp"
+                size_hint: None, None
+                size: 4 * self.parent.height / 5, 3 * self.parent.height / 5
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                on_release: app.root.current = 'camera'
+                md_bg_color: [0.8, 0.5, 0.8, 0.9]
+
